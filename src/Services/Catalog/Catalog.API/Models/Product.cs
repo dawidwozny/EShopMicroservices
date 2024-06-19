@@ -5,7 +5,7 @@
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public List<String> Category { get; set; } = new List<string>();
+        public List<string> Category { get; set; } = new List<string>();
 
         public string Description { get; set; }
 
