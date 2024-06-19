@@ -1,9 +1,20 @@
+using BuildingBlocks.Behaviours;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddCarter();
-builder.Services.AddMediatR(config => { config.RegisterServicesFromAssemblies(typeof(Program).Assembly); });
 
+
+var assembly = typeof(Program).Assembly;
+builder.Services.AddMediatR(config =>
+{ 
+    config.RegisterServicesFromAssemblies(assembly);
+    config.AddOpenBehavior(typeof(ValidationBehaviour<,>));
+
+});
+
+builder.Services.AddValidatorsFromAssemblies(new[] { assembly });
+builder.Services.AddCarter();
 builder.Services.AddMarten(opts =>
 {
     opts.Connection(builder.Configuration.GetConnectionString("Database"));
