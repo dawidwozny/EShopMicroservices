@@ -1,4 +1,4 @@
-using BuildingBlocks.Behaviours;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +21,11 @@ builder.Services.AddMarten(opts =>
     //opts.AutoCreateSchemaObjects = AutoCreate.All;
 }).UseLightweightSessions();
 
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
+
+
 var app = builder.Build();
 app.MapCarter();
+app.UseExceptionHandler(options => { });
+
 app.Run();
