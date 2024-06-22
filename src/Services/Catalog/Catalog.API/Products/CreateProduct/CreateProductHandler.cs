@@ -10,11 +10,10 @@ namespace Catalog.API.Products.CreateProduct
     public record  CreateProductCommand(Guid Id, string Name, List<string> Category,string Description,string ImageFile ,decimal Price)
         : ICommand<CreateProductResult>;
     public record CreateProductResult(Guid Id);
-    internal class CreateProductCommandHnadler(IDocumentSession session, ILogger<CreateProductCommandHnadler> logger) : ICommandHandler<CreateProductCommand, CreateProductResult>
+    internal class CreateProductCommandHnadler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
-            logger.LogInformation("Creating product {Name}", command.Name);
             var prodct = new Product
             {
                 Name = command.Name,
