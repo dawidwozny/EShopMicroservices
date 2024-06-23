@@ -1,5 +1,7 @@
 
+using HealthChecks.UI.Client;
 using Marten;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,10 +32,18 @@ builder.Services.AddStackExchangeRedisCache(options =>
     //options.InstanceName = "Basket_";
 });
 
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("Database"))
+    .AddRedis(builder.Configuration.GetConnectionString("Redis"));
 var app = builder.Build();
 
 // configure the the HTTP request pipeline
 app.MapCarter();
 app.UseExceptionHandler(options => { });
+app.UseHealthChecks("/health", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.Run();
