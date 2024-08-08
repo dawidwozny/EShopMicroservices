@@ -1,0 +1,31 @@
+// create
+
+{
+    "coupon": {
+        "productName": "Iphone X",
+        "description": "Iphone X Discount ",
+        "amount": 220
+    }
+}
+
+
+{
+    "coupon": {
+        "productName": "Samsung 10",
+        "description": "Samsung 10 Discount ",
+        "amount": 100
+    }
+}
+
+
+// update
+
+
+{
+    "coupon": {
+    	"id": 834633779,
+        "productName": "Samsung 10",
+        "description": "Samsung 10 Discount ",
+        "amount": 100
+    }
+}
