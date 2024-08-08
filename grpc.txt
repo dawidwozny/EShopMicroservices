@@ -24,8 +24,19 @@
 {
     "coupon": {
     	"id": 834633779,
-        "productName": "Samsung 10",
-        "description": "Samsung 10 Discount ",
-        "amount": 100
+    	"productName": "Iphone X",
+    	"description": "Iphone X Discount ",
+    	"amount": 150
+    }
+}
+
+
+
+{
+    "coupon": {
+    "id": 2,
+    "productName": "Samsung 10",
+    "description": "Samsung Discount",
+    "amount": 100
     }
 }
