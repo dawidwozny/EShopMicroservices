@@ -47,6 +47,9 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
     return handler;
 });
 
+//comunication services
+builder.Services.AddMessageBroker(builder.Configuration, assembly);
+
 // cross cutting concerns
 builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 

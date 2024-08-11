@@ -9,6 +9,9 @@ global using BuildingBlocks.Exceptions;
 global using BuildingBlocks.Behaviours;
 global using BuildingBlocks.Exceptions.Handler;
 global using Carter;
-global using Basket.API.Data; 
+global using Basket.API.Data;
+global using BuildingBlocks.Messaging.MassTransit;
+global using  Basket.API.Dtos;
+
 
 
